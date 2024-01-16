@@ -106,7 +106,7 @@ def Load_YOLO_dataset(images_path:str,labels_path:str):
     images = []
     annotations = []
     
-    id=0
+    id=1
     for i in images_files:
         if os.path.splitext(i)[0]+'.txt' in labels_files:
             img, ann = extract_info(id,os.path.join(images_path,i),os.path.join(labels_path,os.path.splitext(i)[0]+'.txt'))
@@ -115,7 +115,7 @@ def Load_YOLO_dataset(images_path:str,labels_path:str):
                 annotations.append(j)
             id = id + 1
 
-    id=0
+    id=1
     for i in annotations:
         i['id'] = id
         id = id + 1

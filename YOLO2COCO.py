@@ -43,7 +43,7 @@ class Dataset:
 
     class Licenses:
         def __init__(self):
-            self.id = 0
+            self.id = 1
             self.name = "License 1.0"
             self.url = "http://www"
 
@@ -61,7 +61,7 @@ def extract_info(id:int,image:str,label:str):
     for i in lines:
         i = i.replace('\n','')
         if len(i.split(' ')) > 3:
-            obj_class = int(i.split(' ')[0])
+            obj_class = int(i.split(' ')[0])+1
             x = float(i.split(' ')[1])
             y = float(i.split(' ')[2])
             w = float(i.split(' ')[3])
@@ -79,7 +79,7 @@ def extract_info(id:int,image:str,label:str):
     
     for i in bboxes:
         annotations_info.append({
-            "id": -1,
+            "id": -1, #THIS ID WILL BE CHANGED IN Load_YOLO_dataset() function
             "image_id": id,
             "category_id": i['class'],
             "segmentation": [],
@@ -92,7 +92,7 @@ def extract_info(id:int,image:str,label:str):
         "id": id,
         "width": height,
         "height": width,
-        "file_name": os.path.basename(image),
+        "file_name": os.path.join('images',os.path.basename(image)),
         "license": 0,
         "date_captured": "2023"
     }
@@ -176,21 +176,22 @@ def ConvertDataset(dataset_name:str, image_path:str, label_path:str, dst_folder:
         f.write(str(JSON))
 
     for i in images:
-        shutil.copy(os.path.join(dataset.images_path,i['file_name']),os.path.join(dst_folder,dataset.name,'images'))
+        shutil.copy(os.path.join(dataset.images_path,os.path.basename(i['file_name'])),os.path.join(dst_folder,dataset.name,'images'))
     
 
 if __name__ == "__main__":
     #USAGE
     #ConvertDataset( dataset_name , images_path , labels_path , destination_folder )
+    ConvertDataset('rgb','inhouse/DEEC/rgb/images','inhouse/DEEC/rgb/labels','inhouse-COCO')
 
     # DEI DATASET AUGMENTATION
     #ConvertDataset('depth',r'DEI\depth\images',r'DEI\depth\labels','DEI-COCO')
     #ConvertDataset('intensity',r'DEI\intensity\images',r'DEI\intensity\labels','DEI-COCO')
-    ConvertDataset('rgb',r'DEI\rgb\images',r'DEI\rgb\labels','DEI-COCO')
+    #ConvertDataset('rgb','DEI/rgb/images','DEI/rgb/labels','DEI-COCO')
     #ConvertDataset('thermal',r'DEI\thermal\images',r'DEI\thermal\labels','DEI-COCO')
 
     # DEEC DATASET AUGMENTATION
     #ConvertDataset('depth',r'DEEC\depth\images',r'DEEC\depth\labels','DEEC-COCO')
     #ConvertDataset('intensity',r'DEEC\intensity\images',r'DEEC\intensity\labels','DEEC-COCO')
-    ConvertDataset('rgb',r'DEEC\rgb\images',r'DEEC\rgb\labels','DEEC-COCO')
+    #ConvertDataset('rgb','DEEC/rgb/images','DEEC/rgb/labels','DEEC-COCO')
     #ConvertDataset('thermal',r'DEEC\thermal\images',r'DEEC\thermal\labels','DEEC-COCO')

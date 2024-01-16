@@ -151,12 +151,12 @@ if __name__ == '__main__':
     # DEI DATASET AUGMENTATION
     #data_augmentation('depth',r'inhouse\DEI\depth\images',r'inhouse\DEI\depth\labels','DEI')
     #data_augmentation('intensity',r'inhouse\DEI\intensity\images',r'inhouse\DEI\intensity\labels','DEI')
-    data_augmentation('rgb',r'inhouse\DEI\rgb\images',r'inhouse\DEI\rgb\labels','DEI')
+    data_augmentation('rgb','inhouse/DEI/rgb/images','inhouse/DEI/rgb/labels','DEI')
     #data_augmentation('thermal',r'inhouse\DEI\thermal\images',r'inhouse\DEI\thermal\labels','DEI')
 
     # DEEC DATASET AUGMENTATION
     #data_augmentation('depth',r'inhouse\DEEC\depth\images',r'inhouse\DEEC\depth\labels','DEEC')
     #data_augmentation('intensity',r'inhouse\DEEC\intensity\images',r'inhouse\DEEC\intensity\labels','DEEC')
-    data_augmentation('rgb',r'inhouse\DEEC\rgb\images',r'inhouse\DEEC\rgb\labels','DEEC')
+    data_augmentation('rgb','inhouse/DEEC/rgb/images','inhouse/DEEC/rgb/labels','DEEC')
     #data_augmentation('thermal',r'inhouse\DEEC\thermal\images',r'inhouse\DEEC\thermal\labels','DEEC')
     

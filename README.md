@@ -13,6 +13,10 @@ Description: This script reads a dataset in YOLO format, applies rotations and h
 Usage:
 > python YOLO-DATA-AUG.py
 
+Hint: Modify script to your custom dataset on line 147.
+
+    if  __name__  ==  '__main__':
+
 
 ## Script: YOLO2COCO.py
 
@@ -22,3 +26,6 @@ Usage:
 
 > python YOLO2COCO.py
 
+Hint: Modify script to your custom dataset on line 182.
+
+    if  __name__  ==  '__main__':

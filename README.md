@@ -4,6 +4,7 @@ This repository contains a dataset of images collected at Polo II, in the Depart
 
 To execute scripts, please install Albumentations and OpenCV
 > pip install -U albumentations
+
 > pip install opencv-python
 
 ## Script: YOLO-DATA-AUG.py
